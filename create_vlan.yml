@@ -6,8 +6,8 @@
   tasks:
     - name: Create Vlan
       ios_vlan:
-        vlan_id: "{{item.number}}"
-        name: "{{item.name}}"
+        vlan_id: "{{ item.number }}"
+        name: "{{ item.name }}"
         state: present
       with_items:
         - {number: 50, name: "phong_50"}
@@ -17,7 +17,7 @@
     - name: Show Vlan
       ios_command:
         commands:
-          - show vlan
+          - show vlan brief
         register: show_vlan
     
-    - debug: var = show_vlan.stdout.lines
+    - debug: var=show_vlan.stdout.lines
